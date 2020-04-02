@@ -15,7 +15,4 @@ class IsOwnerOrReadOnly(permissions.BasePermission):
         if request.method in permissions.SAFE_METHODS:
             return True
 
-        # if request.user.is_superuser:
-        #     return True
-
         return obj.owner_ID == request.user

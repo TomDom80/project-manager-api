@@ -103,7 +103,6 @@ class ContactDataSerializer(serializers.ModelSerializer):
             'type',
             'contact_person_ID',
         )
-        # fields = '__all__'
 
 
 class ProjectCommentSerializer(serializers.ModelSerializer):
@@ -121,4 +120,3 @@ class ProjectCommentSerializer(serializers.ModelSerializer):
             'content',
             'project_ID',
         )
-        # fields = '__all__'

@@ -10,7 +10,6 @@ class CurrentUserSerializer(serializers.ModelSerializer):
             'username',
             'email',
         ]
-        # fields = '__all__'
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -24,6 +23,4 @@ class UserSerializer(serializers.ModelSerializer):
             'last_name',
             'groups',
             'user_permissions',
-            # 'token',
         ]
-        # fields = '__all__'
