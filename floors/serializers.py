@@ -10,20 +10,6 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project
-        fields = (
-            'url',
-            'deleted',
-            'id',
-            'created',
-            'modified',
-            'owner_ID',
-            'name',
-            'description',
-            # 'authUser',
-            'scope_of_work',
-            'contact_person',
-            'project_comment',
-        )
         fields = '__all__'
 
     def get_scope_of_work(self, obj):
@@ -38,9 +24,6 @@ class ProjectSerializer(serializers.ModelSerializer):
         qs = obj.projectcomment_project_ID.all()
         return ProjectCommentSerializer(qs, many=True, read_only=True).data
 
-    def get_authUser(self, obj):
-        return self.context.get('request').user.username
-
 
 class ScopeOfWorkSerializer(serializers.ModelSerializer):
     owner_ID = serializers.ReadOnlyField(source='owner_ID.username')
@@ -48,7 +31,6 @@ class ScopeOfWorkSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScopeOfWork
         fields = (
-            # 'url',
             'deleted',
             'id',
             'created',
@@ -59,7 +41,6 @@ class ScopeOfWorkSerializer(serializers.ModelSerializer):
             'description',
             'project_ID',
         )
-        # fields = '__all__'
 
 
 class ContactPersonSerializer(serializers.ModelSerializer):
@@ -69,7 +50,6 @@ class ContactPersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactPerson
         fields = (
-            # 'url',
             'deleted',
             'id',
             'created',
@@ -80,7 +60,6 @@ class ContactPersonSerializer(serializers.ModelSerializer):
             'project_ID',
             'contact_data',
         )
-        # fields = '__all__'
 
     def get_contact_data(self, obj):
         qs = obj.contactdata_project_ID.all()
@@ -93,7 +72,6 @@ class ContactDataSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactData
         fields = (
-            # 'url',
             'deleted',
             'id',
             'created',
@@ -111,7 +89,6 @@ class ProjectCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProjectComment
         fields = (
-            # 'url',
             'deleted',
             'id',
             'created',
